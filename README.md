@@ -7,6 +7,11 @@
 - Run ```docker-compose up``` to fire-up the backend
 - App run in port :8080 for backend and :5173 for frontend
 
+# Additional Information
+To log in/register you can make your own credential by hit ```/api/users/register``` and ```/api/users/login```
+To customize the bot target group you can edit it via ```config/notif.go``` and change chatId to your own group
+and what? nothing you are ready to go with your own front-end/ready made but yet still need improvement xD.
+
 # Tech Stack
 - Golang
 - Postgresql
