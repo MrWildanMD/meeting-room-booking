@@ -21,15 +21,8 @@ type LoginRequest struct {
 	Email   string `json:"email"`
 }
 
-type RegisterRequest struct {
-	Name    string `json:"name"`
-	Email   string `json:"email"`
-	PrivyID string `json:"privy_id"`
-	TypeUser int `json:"type_user,omitempty"`
-}
-
 func (uc *UsersController) RegisterUsers(c *gin.Context) {
-	var body *RegisterRequest
+	var body *models.Users
 
 	if err := c.ShouldBindJSON(&body); err != nil {
 		sendErrorResponse(c, http.StatusBadRequest, err.Error())
@@ -41,6 +34,7 @@ func (uc *UsersController) RegisterUsers(c *gin.Context) {
 	user.Email = body.Email
 	user.PrivyID = body.PrivyID
 	user.TypeUser = body.TypeUser
+	user.TeleID = body.TeleID
 
 	res := uc.DB.Create(&user)
 	if res.Error != nil {
