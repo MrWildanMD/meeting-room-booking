@@ -54,8 +54,7 @@ export const actions = {
         const check_out = formData.get("check_out");
         const number_of_guest = formData.get("guest_total");
         const additional_item = formData.get("additional_items");
-        const approval_id = formData.get("approval_id");
-        const body = await JSON.stringify({"user_id":Number(user_id), "room_id":Number(room_id), check_in, check_out, "number_of_guest":Number(number_of_guest), additional_item, "approval_id":Number(approval_id)});
+        const body = await JSON.stringify({"user_id":Number(user_id), "room_id":Number(room_id), check_in, check_out, "number_of_guests":Number(number_of_guest), additional_item});
         console.log(body);
 
         const token = cookies.get("token");

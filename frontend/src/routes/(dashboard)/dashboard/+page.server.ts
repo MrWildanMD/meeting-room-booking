@@ -31,6 +31,6 @@ export const load = async ({ cookies, fetch }) => {
   }
 
   const bookingBody = await res.json();
-  const bookings = (bookingBody.data) as Booking[];
-  
+  const bookings = bookingBody.data;
+  console.log(bookings);
 };

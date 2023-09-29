@@ -4,7 +4,7 @@
   
   <Layout class="min-h-screen">
     <Layout.Header class="fixed z-10 bg-red-600 bg-opacity-90 py-4 px-4">
-      <h2 class="text-white">Room Reservation</h2>
+      <h2 class="text-white">Dashboard</h2>
       <Layout.Header.Extra>
         <a class="text-white font-bold text-md" href="/logout">Logout</a>
       </Layout.Header.Extra>

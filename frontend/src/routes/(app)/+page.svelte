@@ -206,7 +206,6 @@
               <input type="hidden" name="check_out" value="{$checkOut}">
               <input type="hidden" name="guest_total" value="{$totalGuest}">
               <input type="hidden" name="additional_items" value="{$additionalItems}">
-              <input type="hidden" name="approval_id" value="{1}">
               {#each data.rooms as room}
               <input type="hidden" name="room_id" value="{room.ID}">
               <Card>
