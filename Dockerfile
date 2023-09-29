@@ -10,7 +10,11 @@ RUN apk update && apk add --no-cache git
 # Set the working directory inside the container
 WORKDIR /app
 
+# Installing Air for hot reloading
 RUN go install github.com/cosmtrek/air@latest
+
+# Seeding default admin user
+RUN go run seeders/seeder.go
 
 # Copy the local package files to the container's workspace
 COPY . .

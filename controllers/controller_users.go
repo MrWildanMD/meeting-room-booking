@@ -25,6 +25,7 @@ type RegisterRequest struct {
 	Name    string `json:"name"`
 	Email   string `json:"email"`
 	PrivyID string `json:"privy_id"`
+	TypeUser int `json:"type_user,omitempty"`
 }
 
 func (uc *UsersController) RegisterUsers(c *gin.Context) {
@@ -39,7 +40,7 @@ func (uc *UsersController) RegisterUsers(c *gin.Context) {
 	user.Name = body.Name
 	user.Email = body.Email
 	user.PrivyID = body.PrivyID
-	user.TypeUser = 0
+	user.TypeUser = body.TypeUser
 
 	res := uc.DB.Create(&user)
 	if res.Error != nil {

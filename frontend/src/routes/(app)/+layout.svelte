@@ -1,7 +1,7 @@
 <script lang="ts">
   import Layout from "stwui/layout";
   import { isLoggedIn } from "$lib/stores/login-store";
-  import { id, isAdmin, name } from "$lib/stores/user-store";
+  import { isAdmin } from "$lib/stores/user-store";
 </script>
 
 <Layout class="min-h-screen">
@@ -11,13 +11,10 @@
       {#if !isLoggedIn}
         <a class="text-white font-bold text-md" href="/login">Login</a>
       {/if}
-      <p class="text-white font-bold">Welcome, {$name}</p>
-      <div class="flex flex-row">
-        {#if isAdmin()}
-           <a class="text-white font-bold text-md" href="/dashboard">Dashboard</a>
-        {/if}
-        <a class="text-white font-bold text-md" href="/logout">Logout</a>
-      </div>
+      {#if isAdmin()}
+        <a class="text-white font-bold text-md" href="/dashboard">Dashboard</a>
+      {/if}
+      <a class="text-white font-bold text-md" href="/logout">Logout</a>
     </Layout.Header.Extra>
   </Layout.Header>
   <Layout.Content>
