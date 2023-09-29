@@ -34,12 +34,20 @@
             type="email"
             name="email"
             placeholder="Email"
+            required
             class="w-full px-3 py-2 mb-2 border rounded-lg focus:outline-none border-red-400"
           />
           <input
             type="text"
             name="privy_id"
             placeholder="PrivyID"
+            required
+            class="w-full px-3 py-2 mb-2 border rounded-lg focus:outline-none border-red-400"
+          />
+          <input
+            type="text"
+            name="tele_id"
+            placeholder="Telegram ID"
             class="w-full px-3 py-2 mb-2 border rounded-lg focus:outline-none border-red-400"
           />
           <!-- on:click={(e) => e.preventDefault()} -->
