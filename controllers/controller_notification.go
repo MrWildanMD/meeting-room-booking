@@ -1,10 +1,11 @@
 package controllers
 
 import (
-    "github.com/gin-gonic/gin"
-    "gorm.io/gorm"
     "net/http"
     "strconv"
+
+    "github.com/gin-gonic/gin"
+    "gorm.io/gorm"
     "github.com/MrWildanMD/room-booking/models"
 )
 
@@ -30,8 +31,8 @@ func (nc *NotificationController) AddNotification(c *gin.Context) {
 
 func (nc *NotificationController) GetNotification(c *gin.Context) {
     var notifications []models.Notification
-    if err := nc.DB.Find(&notifications).Error; err != nil {
-        sendErrorResponse(c, http.StatusInternalServerError, err.Error())
+    if err := nc.DB.Preload("User").Preload("Booking").Find(&notifications).Error; err != nil {
+        sendErrorResponse(c, http.StatusNotFound, err.Error())
         return
     }
 
@@ -46,7 +47,7 @@ func (nc *NotificationController) GetNotificationByID(c *gin.Context) {
     }
 
     var notification models.Notification
-    if err := nc.DB.First(&notification, id).Error; err != nil {
+    if err := nc.DB.Preload("User").Preload("Booking").First(&notification, id).Error; err != nil {
         sendErrorResponse(c, http.StatusNotFound, "Notification not found")
         return
     }
@@ -62,7 +63,7 @@ func (nc *NotificationController) UpdateNotification(c *gin.Context) {
     }
 
     var notification models.Notification
-    if err := nc.DB.First(&notification, id).Error; err != nil {
+    if err := nc.DB.Preload("User").Preload("Booking").First(&notification, id).Error; err != nil {
         sendErrorResponse(c, http.StatusNotFound, "Notification not found")
         return
     }

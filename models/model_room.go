@@ -5,13 +5,15 @@ import (
 )
 
 type Room struct {
-	gorm.Model
-	Title string `json:"title" gorm:"not null"`
-	Description string `json:"description" gorm:"not null"`
-	Location string `json:"location" gorm:"not null"`
-	Type int `json:"type" gorm:"not null"`
-	Capacity int `json:"capacity" gorm:"not null"`
-	Status int `json:"status" gorm:"not null"`
+    gorm.Model
+    Title       string    `gorm:"type:varchar(100);not null" json:"title"`
+    Description string    `gorm:"type:varchar(100);not null" json:"description"`
+    Location    string    `gorm:"type:varchar(100);not null" json:"location"`
+    Type        int       `gorm:"type:integer;not null" json:"type"`
+    Capacity    int       `gorm:"type:integer;not null" json:"capacity"`
+    Status      int       `gorm:"type:integer;not null" json:"status"`
+    Offices     []Office  `gorm:"foreignkey:RoomID" json:"offices"`
+    Bookings    []Booking `gorm:"foreignkey:RoomID" json:"bookings"`
 }
 
 func (r *Room) TableName() string {

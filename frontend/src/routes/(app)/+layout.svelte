@@ -1,7 +1,7 @@
 <script lang="ts">
   import Layout from "stwui/layout";
   import { isLoggedIn } from "$lib/stores/login-store";
-  import { isAdmin } from "$lib/stores/user-store";
+  import { typeUser } from "$lib/stores/user-store";
 </script>
 
 <Layout class="min-h-screen">
@@ -11,8 +11,8 @@
       {#if !isLoggedIn}
         <a class="text-white font-bold text-md" href="/login">Login</a>
       {/if}
-      {#if isAdmin()}
-        <a class="text-white font-bold text-md" href="/dashboard">Dashboard</a>
+      {#if $typeUser === 1}
+        <a class="text-white font-bold text-md mr-2 md:mr-4" href="/dashboard">Dashboard</a>
       {/if}
       <a class="text-white font-bold text-md" href="/logout">Logout</a>
     </Layout.Header.Extra>

@@ -20,6 +20,9 @@ func RegisterRoutes(rg *gin.RouterGroup, db *gorm.DB) {
 	room := &controllers.RoomController{
 		DB: db,
 	}
+	office := &controllers.OfficeController{
+		DB: db,
+	}
 
 	// Since booking doesnt require to log in for guest so it not necessary to use deserialize user middleware here
 	bookingRoute := rg.Group("booking")
@@ -38,6 +41,15 @@ func RegisterRoutes(rg *gin.RouterGroup, db *gorm.DB) {
 		notifRoute.GET("/:id", notif.GetNotificationByID)
 		notifRoute.PUT("/:id", notif.UpdateNotification)
 		notifRoute.DELETE("/:id", notif.DeleteNotification)
+	}
+	
+	officeRoute := rg.Group("office")
+	{
+		officeRoute.POST("/", office.AddOffice)
+		officeRoute.GET("/", office.GetOffice)
+		officeRoute.GET("/:id", office.GetOfficeByID)
+		officeRoute.PUT("/:id", office.UpdateOffice)
+		officeRoute.DELETE("/:id", office.DeleteOffice)
 	}
 
 	// Here we use our deserialize user middleware because admin can perform CRUD operations

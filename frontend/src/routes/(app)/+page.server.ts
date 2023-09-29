@@ -1,5 +1,4 @@
 import { tokenAuth } from '$lib/stores/login-store.js';
-import { id, name, privyId, typeUser, email, teleId } from "$lib/stores/user-store";
 import { redirect } from '@sveltejs/kit';
 import { get } from 'svelte/store';
 import type { Rooms } from '../../models/rooms.js';
@@ -37,7 +36,7 @@ export const load = async ({cookies, fetch}) => {
         throw new Error(userResponse.statusText);
     }
 
-    const roomBody = await roomResponse.json()
+    const roomBody = await roomResponse.json();
     const rooms = (roomBody.data) as Rooms[];
     const userBody = await userResponse.json();
     const user = (userBody.data) as User;

@@ -7,15 +7,19 @@ import (
 )
 
 type Booking struct {
-	gorm.Model
-	UserID         int       `json:"user_id"`
-	RoomID         int       `json:"room_id"`
-	CheckIn        time.Time `json:"check_in" gorm:"not null"`
-	CheckOut       time.Time `json:"check_out" gorm:"not null"`
-	NumberOfGuest  int       `json:"number_of_guest" gorm:"not null"`
-	BookingStatus  int       `json:"booking_status" gorm:"not null"`
-	AdditionalItem string    `json:"additional_item" gorm:"type:text"`
-	ApprovalID     int       `json:"approval_id,omitempty"`
+    gorm.Model
+    UserID         int       `gorm:"type:integer;not null" json:"user_id"`
+    RoomID         int       `gorm:"type:integer;not null" json:"room_id"`
+    CheckIn        time.Time `gorm:"type:datetime;not null" json:"check_in"`
+    CheckOut       time.Time `gorm:"type:datetime;not null" json:"check_out"`
+    NumberOfGuests int       `gorm:"type:integer;not null" json:"number_of_guests"`
+    BookingStatus  int       `gorm:"type:integer;not null" json:"booking_status"`
+    AdditionalItem string    `gorm:"type:text" json:"additional_item"`
+    CreatedAt      time.Time `gorm:"type:datetime;not null" json:"created_at"`
+    ApprovalID     int       `json:"approval_id"`
+    User           Users      `gorm:"foreignkey:UserID" json:"user"`
+    Room           Room      `gorm:"foreignkey:RoomID" json:"room"`
+    Notifications  []Notification `gorm:"foreignkey:BookingID" json:"notifications"`
 }
 
 func (b *Booking) TableName() string {

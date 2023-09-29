@@ -33,7 +33,7 @@ func Init(config *config.Config) *gorm.DB {
 		log.Fatalln("Failed to connect to database: ", err)
 	}
 
-	db.AutoMigrate(&models.Users{}, &models.Room{}, &models.Booking{}, &models.Notification{})
+	db.AutoMigrate(&models.Users{}, &models.Room{}, &models.Booking{}, &models.Notification{}, &models.Office{})
 
 	DB = db
 	return db
