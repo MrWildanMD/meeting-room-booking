@@ -5,11 +5,15 @@
 - Work under Golang-Gin for backend and Svelte for fronted
 - Extendable as your need!
 - Run ```docker-compose up``` to fire-up the backend
-- App run in port :8080 for backend and :5173 for frontend
+- App run in port :8000 for backend and :5173 for frontend
+
+# Configuration
+- Change ```APP_MODE``` in ```.env``` to ```docker``` if you want to use docker, change to ```local``` if you want to use without docker
+- Change Telegram Token if you want to use your own BOT API TOKEN
+- To customize the bot target group you can edit it in the ```config/notif.go``` and change ChatID to your own group ChatID
 
 # Additional Information
 To log in/register you can make your own credential by hit ```/api/users/register``` and ```/api/users/login```
-To customize the bot target group you can edit it via ```config/notif.go``` and change chatId to your own group
 and what? nothing you are ready to go with your own front-end/ready made but yet still need improvement xD.
 
 # Tech Stack
@@ -18,4 +22,4 @@ and what? nothing you are ready to go with your own front-end/ready made but yet
 - Svelte
 
 # About
-This project is mainly for portofolio, but it can be extendable to use in production, bring own frontend and integrate it with the Go backend, all endpoints are stored under ```routers/``` dir
+This project is mainly for portofolio, but it can be extendable to use in production, bring your own frontend and integrate it with the Go backend, all endpoints are stored under ```routers/``` dir

@@ -52,7 +52,7 @@
   $: bgImage1 = `background-image: url("${bg1}");`;
   $: bgImage2 = `background-image: url("${bg2}");`;
   $: visible = false;
-  $: roomVisible = false;
+  $: roomVisible = !inputGuestError && !checkInError && !checkOutError;
   $: inputGuestError =
     guestNumber == undefined || guestNumber == 0
       ? "Number of guest is required or not below 1"
@@ -63,22 +63,23 @@
   onMount(() => {
     isMobile = window.innerWidth < 768;
     visible = true;
+    addItems = [];
   });
 
   function scrollToFillForm(e: any) {
     e.preventDefault();
     document.getElementById("fill")!.scrollIntoView({ behavior: "smooth" });
   }
+
   function scrollToRoom(e: any) {
     e.preventDefault();
-    let additional = addItems.map((items) => items.label).join(",");
+    let additional = addItems.length === 0 ? "" : addItems.map((item) => item.label).join(",");
     if (!inputGuestError && !checkInError && !checkOutError) {
-      roomVisible = true;
+      document.getElementById("room")!.scrollIntoView({ behavior: "smooth" });
       checkIn.set(dayjs(checkInDate).format());
       checkOut.set(dayjs(checkOutDate).format());
       totalGuest.set(guestNumber);
       additionalItems.set(additional);
-      document.getElementById("room")!.scrollIntoView({ behavior: "smooth" });
     }
   }
 
