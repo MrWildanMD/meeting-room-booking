@@ -9,8 +9,12 @@ const config = {
   },
   plugins: [
     require('@tailwindcss/forms'),
-    require('stwui/plugin')
+    require('stwui/plugin'),
+    require("daisyui")
   ],
+  daisyui: {
+    prefix: "daisy",
+  },
 };
 
 module.exports = config;

@@ -1,15 +1,12 @@
 import { tokenAuth } from '$lib/stores/login-store.js';
 import { redirect } from '@sveltejs/kit';
 import { get } from 'svelte/store';
-import type { Rooms } from '../../models/rooms.js';
+import type { Room } from '../../models/rooms.js';
 import type { User } from '../../models/user.js';
 
 export const load = async ({cookies, fetch}) => {
     let bearer: string;
     const token = cookies.get("token");
-    if (token?.length == 0) {
-        bearer = get(tokenAuth);
-    }
     bearer = "Bearer "+token;
 
     if (!token) {
@@ -17,9 +14,7 @@ export const load = async ({cookies, fetch}) => {
     }
     const [roomResponse, userResponse] = await Promise.all([
         fetch("http://localhost:8000/api/room", {
-        headers: {
-            Authorization: bearer,
-        },
+        method: "GET"
     }),
         fetch("http://localhost:8000/api/users/me", {
         headers: {
@@ -37,7 +32,7 @@ export const load = async ({cookies, fetch}) => {
     }
 
     const roomBody = await roomResponse.json();
-    const rooms = (roomBody.data) as Rooms[];
+    const rooms = (roomBody.data) as Room[];
     const userBody = await userResponse.json();
     const user = (userBody.data) as User;
     return {

@@ -106,7 +106,7 @@
             Productive Meetings Await."
           </p>
         </div>
-        <Button type="danger" size="xl" on:click={scrollToFillForm}
+        <Button class="bg-red-500 hover:bg-red-600 text-white font-bold rounded" size="xl" on:click={scrollToFillForm}
           >Reserve Now!</Button
         >
       </div>
@@ -185,7 +185,7 @@
                 </Select>
               </div>
               <Button
-                class="bg-red-500 hover:bg-red-600 text-white font-bold py-4 px-8 rounded"
+                class="bg-red-500 hover:bg-red-600 text-white font-bold rounded"
                 on:click={scrollToRoom}>Select Room</Button
               >
             </div>
