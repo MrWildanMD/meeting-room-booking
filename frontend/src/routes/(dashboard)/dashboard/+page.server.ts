@@ -168,7 +168,7 @@ export const actions = {
   decline: async(event) => {
     const token = event.cookies.get("token");
     const formData = await event.request.formData();
-    const id = formData.get("id");
+    const id = formData.get("booking_id");
 
     const res = await fetch(url+"booking/"+id, {
       method: "DELETE",
