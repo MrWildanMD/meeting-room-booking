@@ -1,5 +1,7 @@
 # Simple Meeting Room Booking App
 
+![image](https://github.com/MrWildanMD/meeting-room-booking/assets/60354284/beed153d-de1e-4efc-b104-9f599581b962)
+
 # Main Functionality
 - Notification via Telegram bot if new Booking added, you can join here: https://t.me/+gL6b2AJeSrMyZGQ1
 - Work under Golang-Gin for backend and Svelte for fronted
