@@ -7,7 +7,7 @@
 - Work under Golang-Gin for backend and Svelte for fronted
 - Extendable as your need!
 - Run ```docker-compose up``` to fire-up the backend
-- Run ```cd frontend/``` and ```pnpm dev``` to fire-up the frontend
+- Run ```cd frontend/``` and install dependencies with ```pnpm install``` after done installing all dependencies run ```pnpm dev``` to fire-up the frontend
 - App run in port :8000 for backend and :5173 for frontend
 
 # Configuration
