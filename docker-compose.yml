@@ -22,7 +22,7 @@ services:
     #  - local
 
   postgresdb:
-    image: postgres:alpine
+    image: postgres:latest
     container_name: postgres_container
     environment:
       - POSTGRES_USER=${DB_USERNAME}
