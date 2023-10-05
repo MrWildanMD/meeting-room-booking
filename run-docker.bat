@@ -27,6 +27,8 @@ if "%DB_ENGINE%" == "postgresql" (
     echo     restart: on-failure
     echo     volumes:
     echo       - .:/app
+    echo     networks:
+    echo       - localnet
     echo   postgresdb:
     echo     image: postgres:latest
     echo     container_name: postgres_container
@@ -40,6 +42,13 @@ if "%DB_ENGINE%" == "postgresql" (
     echo     volumes:
     echo       - ./pg_data:/var/lib/postgresql/data
     echo     restart: always
+    echo     networks:
+    echo       - localnet
+    echo volumes:
+    echo   pg_data:
+    echo networks:
+    echo   localnet:
+    echo      driver: bridge
   ) >docker-compose.yml
 ) elif "%DB_ENGINE%" == "mysql" (
   REM MySQL configuration
@@ -63,6 +72,8 @@ if "%DB_ENGINE%" == "postgresql" (
     echo     restart: on-failure
     echo     volumes:
     echo       - .:/app
+    echo     networks:
+    echo       - localnet
     echo   mysql:
     echo     image: mysql:latest
     echo     container_name: mysql_container
@@ -77,6 +88,13 @@ if "%DB_ENGINE%" == "postgresql" (
     echo       - !DB_PORT!:!DB_PORT!
     echo     volumes:
     echo       - ./mysql_data:/var/lib/mysql
+    echo     networks:
+    echo       - localnet
+    echo volumes:
+    echo   mysql_data:
+    echo networks:
+    echo   localnet:
+    echo      driver: bridge
   ) >docker-compose.yml
 ) else (
   echo Unknown or unsupported database engine specified in DB_ENGINE.

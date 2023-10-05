@@ -24,6 +24,8 @@ services:
     restart: on-failure
     volumes:
       - .:/app
+    networks:
+      - localnet
 
   postgresdb:
     image: postgres:latest
@@ -38,9 +40,14 @@ services:
     volumes:
       - ./pg_data:/var/lib/postgresql/data
     restart: always
+    networks:
+      - localnet
 
 volumes:
   pg_data:
+networks:
+  localnet:
+    driver: bridge
 EOF
 elif [ "$DB_ENGINE" = "mysql" ]; then
     # MySQL configuration
@@ -64,6 +71,8 @@ services:
     restart: on-failure
     volumes:
       - .:/app
+    networks:
+      - localnet
 
   mysql:
     image: mysql:latest
@@ -79,9 +88,14 @@ services:
       - ${DB_PORT}:${DB_PORT}
     volumes:
       - ./mysql_data:/var/lib/mysql
+    networks:
+      - localnet
 
 volumes:
   mysql_data:
+networks:
+  localnet:
+    driver: bridge
 EOF
 else
     echo "Unknown or unsupported database engine specified in DB_ENGINE."
