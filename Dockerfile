@@ -11,7 +11,7 @@ RUN apk update && apk add --no-cache git
 WORKDIR /app
 
 # CompileDaemon as hot-reloading
-RUN go get github.com/githubnemo/CompileDaemon
+RUN go install github.com/githubnemo/CompileDaemon@latest
 
 # Copy the local package files to the container's workspace
 COPY . .
