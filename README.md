@@ -6,12 +6,11 @@
 - Notification via Telegram bot if new Booking added, you can join here: https://t.me/+gL6b2AJeSrMyZGQ1
 - Work under Golang-Gin for backend and Svelte for fronted
 - Extendable as your need!
-- Run ```docker-compose up``` to fire-up the backend
+- Run ```run-docker.sh``` if you are using linux or ```run-docker.bat``` if you are using windows to fire-up the backend using docker
 - Run ```cd frontend/``` and install dependencies with ```pnpm install``` after done installing all dependencies run ```pnpm dev``` to fire-up the frontend
 - App run in port :8000 for backend and :5173 for frontend
 
 # Configuration
-- Change ```APP_MODE``` in ```.env``` to ```docker``` if you want to use docker, change to ```local``` if you want to use without docker
 - Change Telegram Token if you want to use your own BOT API TOKEN
 - To customize the bot target group you can edit it in the ```config/notif.go``` and change ChatID to your own group ChatID
 
@@ -24,15 +23,14 @@
 - ```models``` = Storing the models
 - ```routers``` = Storing the endpoints
 - ```utils``` = Storing the utilities that used by app
-- ```.air.toml``` = Air hot-reload configuration
 - ```.env``` = App ENV
 - ```Dockerfile``` = Dockerize the app
-- ```docker-compose.yml``` = Same
 - ```main.go``` = Main driver
 
 # Additional Information
-To log in/register you can make your own credential by hit ```/api/users/register``` and ```/api/users/login```
-and what? nothing you are ready to go with your own front-end/ready made but yet still need improvement xD.
+Default dummy user information
+Admin: admin@test.com | 12345
+Guest: guest@test.com | 12345
 
 # Tech Stack
 - Golang
