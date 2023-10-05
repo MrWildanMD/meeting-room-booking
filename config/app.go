@@ -17,7 +17,6 @@ type Config struct {
 
 	APP_PORT      string
 	APP_MODE      string
-	GIN_MODE      string
 	CLIENT_ORIGIN string
 
 	TOKEN_SECRET  string

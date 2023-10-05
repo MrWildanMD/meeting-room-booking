@@ -14,7 +14,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Could not load env", err)
 	}
-	gin.SetMode(cfg.GIN_MODE)
+	gin.SetMode(cfg.APP_MODE)
 	r := gin.Default()
 	router := r.Group("api")
 	database.Init(cfg)

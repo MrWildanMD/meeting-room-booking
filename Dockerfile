@@ -10,11 +10,13 @@ RUN apk update && apk add --no-cache git
 # Set the working directory inside the container
 WORKDIR /app
 
-# Installing Air for hot reloading
-RUN go install github.com/cosmtrek/air@latest
+# CompileDaemon as hot-reloading
+RUN go get github.com/githubnemo/CompileDaemon
 
 # Copy the local package files to the container's workspace
 COPY . .
 
 # Run go mod tidy for installing/removing unused package
 RUN go mod tidy
+
+ENTRYPOINT CompileDaemon --build="go build -a -installsuffix cgo -o main ." --command=./main
