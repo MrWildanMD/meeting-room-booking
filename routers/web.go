@@ -2,26 +2,26 @@ package routers
 
 import (
 	"github.com/MrWildanMD/room-booking/controllers"
+	"github.com/MrWildanMD/room-booking/database"
 	"github.com/MrWildanMD/room-booking/middlewares"
 	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 )
 
-func RegisterRoutes(rg *gin.RouterGroup, db *gorm.DB) {
+func RegisterRoutes(rg *gin.RouterGroup) {
 	booking := &controllers.BookingController{
-		DB: db,
+		DB: database.DB,
 	}
 	users := &controllers.UsersController{
-		DB: db,
+		DB: database.DB,
 	}
 	notif := &controllers.NotificationController{
-		DB: db,
+		DB: database.DB,
 	}
 	room := &controllers.RoomController{
-		DB: db,
+		DB: database.DB,
 	}
 	office := &controllers.OfficeController{
-		DB: db,
+		DB: database.DB,
 	}
 
 	// Since booking doesnt require to log in for guest so it not necessary to use deserialize user middleware here
@@ -42,7 +42,7 @@ func RegisterRoutes(rg *gin.RouterGroup, db *gorm.DB) {
 		notifRoute.PUT("/:id", notif.UpdateNotification)
 		notifRoute.DELETE("/:id", notif.DeleteNotification)
 	}
-	
+
 	officeRoute := rg.Group("office")
 	{
 		officeRoute.POST("/", office.AddOffice)
@@ -55,11 +55,11 @@ func RegisterRoutes(rg *gin.RouterGroup, db *gorm.DB) {
 	// Here we use our deserialize user middleware because admin can perform CRUD operations
 	roomRoute := rg.Group("room")
 	{
-		roomRoute.POST("/", middlewares.DeserializeUsers() ,room.AddRoom)
+		roomRoute.POST("/", middlewares.DeserializeUsers(), room.AddRoom)
 		roomRoute.GET("/", room.GetRoom)
 		roomRoute.GET("/:id", room.GetRoomByID)
-		roomRoute.PUT("/:id", middlewares.DeserializeUsers() ,room.UpdateRoom)
-		roomRoute.DELETE("/:id", middlewares.DeserializeUsers() ,room.DeleteRoom)
+		roomRoute.PUT("/:id", middlewares.DeserializeUsers(), room.UpdateRoom)
+		roomRoute.DELETE("/:id", middlewares.DeserializeUsers(), room.DeleteRoom)
 	}
 
 	usersRoute := rg.Group("users")
@@ -67,9 +67,9 @@ func RegisterRoutes(rg *gin.RouterGroup, db *gorm.DB) {
 		usersRoute.POST("/login", users.LoginUsers)
 		usersRoute.POST("/register", users.RegisterUsers)
 		usersRoute.POST("/logout", users.LogoutUsers)
-		usersRoute.GET("/", middlewares.DeserializeUsers() ,users.GetUsers)
-		usersRoute.GET("/me", middlewares.DeserializeUsers() ,users.GetMe)
+		usersRoute.GET("/", middlewares.DeserializeUsers(), users.GetUsers)
+		usersRoute.GET("/me", middlewares.DeserializeUsers(), users.GetMe)
 		usersRoute.PUT("/:id", users.UpdateUsers)
-		usersRoute.DELETE("/:id", middlewares.DeserializeUsers() ,users.DeleteUsers)
+		usersRoute.DELETE("/:id", middlewares.DeserializeUsers(), users.DeleteUsers)
 	}
 }

@@ -13,10 +13,11 @@ type Config struct {
 	DBUser     string
 	DBPassword string
 	DBName     string
+	DBEngine string
 
 	APP_PORT      string
 	APP_MODE      string
-	GIN_MODE	string
+	GIN_MODE      string
 	CLIENT_ORIGIN string
 
 	TOKEN_SECRET  string
@@ -36,13 +37,13 @@ func LoadConfig() (*Config, error) {
 		DBUser:        os.Getenv("DB_USERNAME"),
 		DBPassword:    os.Getenv("DB_PASSWORD"),
 		DBName:        os.Getenv("DB_NAME"),
+		DBEngine:        os.Getenv("DB_ENGINE"),
 		APP_PORT:      os.Getenv("PORT"),
 		APP_MODE:      os.Getenv("APP_MODE"),
 		CLIENT_ORIGIN: os.Getenv("CLIENT_ORIGIN"),
 		TOKEN_SECRET:  os.Getenv("TOKEN_SECRET"),
 		TOKEN_MAX_AGE: maxAge,
-		TelebotToken: os.Getenv("TELEBOT_TOKEN"),
-		GIN_MODE: os.Getenv("GIN_MODE"),
+		TelebotToken:  os.Getenv("TELEBOT_TOKEN"),
 	}
 
 	return cfg, nil
