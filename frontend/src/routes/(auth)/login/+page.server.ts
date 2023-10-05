@@ -8,7 +8,7 @@ export const load = async (event) => {
 };
 
 export const actions = {
-  default: async (event) => {
+  login: async (event) => {
     const formData = await event.request.formData();
     const email = formData.get("email");
     const privy_id = formData.get("privy_id");

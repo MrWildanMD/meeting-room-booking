@@ -16,7 +16,7 @@
     </div> -->
   <Card bordered elevation="xl" class="rounded-xl p-4">
     <Card.Content class="flex flex-col gap-4">
-      <form method="POST">
+      <form method="POST" action="?/login">
         <h2 class="text-2xl font-bold text-center text-red-600">Login</h2>
         {#if form}
           <h4 class="text-red-600 font-light text-md text-center">

@@ -15,6 +15,21 @@
 - Change Telegram Token if you want to use your own BOT API TOKEN
 - To customize the bot target group you can edit it in the ```config/notif.go``` and change ChatID to your own group ChatID
 
+# Project Structure Explanation
+- ```config``` = Storing configuration that used by app
+- ```controllers``` = Storing the api handler
+- ```database``` = Storing the database things
+- ```frontend``` = Storing the frontend
+- ```middlewares``` = Storing the gin middleware
+- ```models``` = Storing the models
+- ```routers``` = Storing the endpoints
+- ```utils``` = Storing the utilities that used by app
+- ```.air.toml``` = Air hot-reload configuration
+- ```.env``` = App ENV
+- ```Dockerfile``` = Dockerize the app
+- ```docker-compose.yml``` = Same
+- ```main.go``` = Main driver
+
 # Additional Information
 To log in/register you can make your own credential by hit ```/api/users/register``` and ```/api/users/login```
 and what? nothing you are ready to go with your own front-end/ready made but yet still need improvement xD.
